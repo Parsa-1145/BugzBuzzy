@@ -1,9 +1,11 @@
+#EnemyBase
 class_name EnemyBase
 extends CharacterBody3D
 
 @export var move_speed: float = 2.0
 @export var gravity: float = 9.8
-@export var health: float = 10.0
+@export var health: float = 20.0
+@export var score: float = 20.0
 var nearest_tower: Node3D = null
 var current_target: Node3D = null
 
@@ -47,3 +49,12 @@ func _update_nearest_target():
 			min_dist = d
 			nearest = t
 	current_target = nearest
+	
+func take_damage(amount: float) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+
+func die() -> void:
+	queue_free()
+	GameManager.enemies.erase(self)

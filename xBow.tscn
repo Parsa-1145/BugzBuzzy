@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://diag0bpotv08h"]
+
+[ext_resource type="Script" uid="uid://c4s5gvfk5vlqq" path="res://Xbow.gd" id="1_uv8xw"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hr5et"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_61od6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61od6"]
+size = Vector3(1, 2.0584717, 1)
+
+[node name="StaticBody3D2" type="StaticBody3D"]
+script = ExtResource("1_uv8xw")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_hr5et")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0783617, 0)
+mesh = SubResource("PrismMesh_61od6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52923584, 0)
+shape = SubResource("BoxShape3D_61od6")

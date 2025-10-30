@@ -1,4 +1,4 @@
-
+#projectile
 class_name Player
 extends CharacterBody3D
 
@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var crouch_speed: float = 2.5
 @export var jump_force: float = 10.0
 @export var gravity: float = -24.8
+@export var y_offset: float =-0.50;
 @export var mouse_sensitivity: float = 0.3
 @export var camera: CameraFollow
 
@@ -20,8 +21,7 @@ var is_crouching: bool = false
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-
-
+	
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	rotate_toward_mouse()
@@ -37,6 +37,9 @@ func handle_movement(delta: float) -> void:
 		input_dir.x -= 1
 	if Input.is_action_pressed("move_right"):
 		input_dir.x += 1
+	if Input.is_action_just_pressed("shoot"):
+		shoot_projectile()
+
 
 	input_dir = input_dir.normalized()
 	var move_dir = (input_dir).normalized()
@@ -73,3 +76,20 @@ func rotate_toward_mouse() -> void:
 
 	var target_rotation = atan2(direction.x, direction.z)
 	rotation.y = lerp_angle(rotation.y, target_rotation, 0.2)
+
+func shoot_projectile() -> void:
+	var projectile_scene = GameManager.projectile_scene
+
+	if projectile_scene == null:
+		return
+	
+	var projectile = projectile_scene.instantiate()
+	get_parent().add_child(projectile)
+	
+	# Position at player's head or slightly in front
+	var spawn_pos = global_position + Vector3(0, y_offset, 0) + -transform.basis.z
+	projectile.global_position = spawn_pos
+	
+	# Direction is where the player is facing
+	var forward = -transform.basis.z
+	projectile.direction = forward
