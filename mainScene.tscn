@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=10 format=3 uid="uid://dk1o10mk3leno"]
 
-[ext_resource type="Script" path="res://HudManager.gd" id="2_g4qto"]
+[ext_resource type="Script" uid="uid://d3noh3utfelk7" path="res://HudManager.gd" id="2_g4qto"]
+[ext_resource type="PackedScene" uid="uid://diag0bpotv08h" path="res://xBow.tscn" id="3_hr5et"]
+[ext_resource type="Script" path="res://TowePlaceholder.gd" id="4_61od6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
 size = Vector3(100, 1, 100)
@@ -12,6 +14,11 @@ points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hr5et"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="TorusMesh" id="TorusMesh_2qqqv"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_we1jl"]
+points = PackedVector3Array(-0.97744143, 0.049764834, -0.18312658, 0.9774394, 0.049767062, 0.18313551, 0.9784049, -0.04182494, 0.1833164, -0.18351372, -0.041821305, 0.978376, -0.11702969, -0.24486797, -0.7902605, 0.25877878, 0.24850625, -0.71911687, -0.14399064, 0.24875438, 0.7487126, -0.3805545, -0.24498063, 0.70291454, 0.76708823, -0.21733022, -0.4127724, -0.5900629, 0.22526969, -0.6196291, 0.5235438, -0.24330005, 0.61069316, 0.5597305, 0.22491772, 0.6479886, -0.78067034, 0.16910996, 0.5103477, -0.8599503, -0.21848288, 0.11854925, 0.39532635, 0.049568705, -0.91228336, 0.8007586, 0.19678749, -0.41499034, -0.5424449, -0.10144918, -0.81355554, 0.45675743, 0.049633868, 0.8832485, -0.7487183, 0.24875413, -0.14396916, -0.15199271, 0.079948075, -0.97277045, -0.8135618, -0.101449355, 0.5424342, 0.74868, 0.24875784, 0.14397135, -0.7027667, -0.24499057, -0.38073763, 0.12000745, -0.16120075, -0.9309316, 0.850308, -0.041520163, -0.516225, 0.14946537, -0.19034863, 0.8969633, 0.7902525, -0.24487938, 0.11682966, 0.75638217, -0.07161803, 0.6352837, -0.30216888, 0.14003108, 0.90702254, -0.8772622, -0.071607776, -0.4537938, 0.4767621, -0.18975163, -0.7750546, 0.18160948, 0.14029223, 0.9391314)
 
 [node name="Node3D" type="Node3D"]
 
@@ -81,5 +88,20 @@ layout_mode = 2
 [node name="MoneyLabel" type="Label" parent="CanvasLayer/TopLeft"]
 layout_mode = 2
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1739833, 0)
+[node name="StaticBody3D2" parent="." instance=ExtResource("3_hr5et")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.707549, 0.5, -6.8906927)
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("4_61od6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("TorusMesh_2qqqv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("ConvexPolygonShape3D_we1jl")
+
+[node name="Label" type="Label3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95237595, 0)
+text = "asdasdasd"
+font_size = 122
