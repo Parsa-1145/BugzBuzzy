@@ -4,7 +4,10 @@ extends Node
 @onready var player_scene = preload("res://PlayerBase.tscn")
 @onready var camera_scene = preload("res://CameraBase.tscn")
 
-var playerNode: Node3D
+var enemies : Array[EnemyBase]= []
+var towers = []
+
+var playerNode: Player
 
 func _ready() -> void:
 	playerNode = player_scene.instantiate()

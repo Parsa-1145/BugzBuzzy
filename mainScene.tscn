@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=13 format=3 uid="uid://dk1o10mk3leno"]
 
 [ext_resource type="Script" uid="uid://igjrqg4ogdhs" path="res://EnemyBase.gd" id="1_iwpey"]
+[ext_resource type="Script" path="res://HudManager.gd" id="2_g4qto"]
+[ext_resource type="Script" path="res://Tower.gd" id="3_hr5et"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
 size = Vector3(100, 1, 100)
@@ -17,6 +19,13 @@ points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hr5et"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_hr5et"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_61od6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61od6"]
+size = Vector3(1, 2.0584717, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -81,8 +90,32 @@ mesh = SubResource("BoxMesh_iwpey")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D5"]
 shape = SubResource("ConvexPolygonShape3D_hr5et")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 23.0
-offset_top = 18.0
-offset_right = 61.0
-offset_bottom = 30.0
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_g4qto")
+
+[node name="TopLeft" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 503.0
+offset_bottom = 168.0
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/TopLeft"]
+layout_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/TopLeft"]
+layout_mode = 2
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.040425, 6.1165915)
+script = ExtResource("3_hr5et")
+
+[node name="Body" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("BoxMesh_hr5et")
+
+[node name="Head" type="MeshInstance3D" parent="StaticBody3D2"]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0, 1.0783617, 0)
+mesh = SubResource("PrismMesh_61od6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52923584, 0)
+shape = SubResource("BoxShape3D_61od6")
