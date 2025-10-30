@@ -3,9 +3,11 @@ extends Node
 
 @onready var player_scene = preload("res://PlayerBase.tscn")
 @onready var camera_scene = preload("res://CameraBase.tscn")
+@onready var castle_scene = preload("res://castle.tscn")
 
 var enemies : Array[EnemyBase]= []
 var towers = []
+var castle: Castle
 
 var enemy_types: Array[PackedScene] = [
 	preload("res://Skeleton.tscn")
@@ -24,6 +26,10 @@ func _ready() -> void:
 	if cameraNode is CameraFollow:
 		cameraNode.playerNode = playerNode
 		playerNode.camera = cameraNode
+		
+	castle = castle_scene.instantiate()
+	add_child(castle)
+	castle.position = Vector3(3, 0, 3)
 	
 	var timer = Timer.new()
 	timer.wait_time = 2.0  # seconds

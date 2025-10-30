@@ -1,9 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=10 format=3 uid="uid://dk1o10mk3leno"]
 
 [ext_resource type="Script" uid="uid://d3noh3utfelk7" path="res://HudManager.gd" id="2_g4qto"]
-[ext_resource type="Script" uid="uid://brfujftq1fsp0" path="res://Castle.gd" id="3_61od6"]
 [ext_resource type="PackedScene" uid="uid://diag0bpotv08h" path="res://xBow.tscn" id="3_hr5et"]
-[ext_resource type="Script" uid="uid://okrlbq4c2jc4" path="res://TowePlaceholder.gd" id="4_61od6"]
+[ext_resource type="Script" path="res://TowePlaceholder.gd" id="4_61od6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
 size = Vector3(100, 1, 100)
@@ -15,16 +14,6 @@ points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hr5et"]
 points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_6mfv6"]
-size = Vector3(3.165, 2.695, 2.955)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6mfv6"]
-points = PackedVector3Array(-1.5825, -1.3475, -1.4775, -1.5825, 1.3475, -1.4775, 1.5821903, -1.3475, -1.4775, -1.5825, -1.3475, 1.4775, -1.5825, 1.3475, 1.4775, 1.5821903, 1.3475, -1.4775, 1.5821903, -1.3475, 1.4775, 1.5821903, 1.3475, 1.4775)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_2qqqv"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_we1jl"]
 
 [sub_resource type="TorusMesh" id="TorusMesh_2qqqv"]
 
@@ -101,26 +90,6 @@ layout_mode = 2
 
 [node name="StaticBody3D2" parent="." instance=ExtResource("3_hr5et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.707549, 0.5, -6.8906927)
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.50315, 2.0663633, 4.3803477)
-script = ExtResource("3_61od6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69177747, 0)
-mesh = SubResource("BoxMesh_6mfv6")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69177747, 0)
-shape = SubResource("ConvexPolygonShape3D_6mfv6")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D3"]
-transform = Transform3D(1.925, 0, 0, 0, 1.925, 0, 0, 0, 1.925, 0, 2.3747163, 0)
-mesh = SubResource("CylinderMesh_2qqqv")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="StaticBody3D3/MeshInstance3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1067884, 0)
-mesh = SubResource("TorusMesh_we1jl")
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("4_61od6")
