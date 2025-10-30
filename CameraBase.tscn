@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://6084yj3aw7ci"]
+
+[ext_resource type="Script" uid="uid://cauq5fyx87bcf" path="res://cameraFollow.gd" id="1_pseio"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.8712053, 0.49091896, 0, -0.49091896, 0.8712053, 0, 0, 0)
+script = ExtResource("1_pseio")
