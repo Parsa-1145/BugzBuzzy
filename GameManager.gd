@@ -12,13 +12,14 @@ var enemy_types: Array[PackedScene] = [
 ]
 
 var playerNode: Player
+var cameraNode: CameraFollow
 
 func _ready() -> void:
 	playerNode = player_scene.instantiate()
 	add_child(playerNode)
 	playerNode.global_position = Vector3(0, 2, 0)
 	
-	var cameraNode = camera_scene.instantiate()
+	cameraNode = camera_scene.instantiate()
 	add_child(cameraNode)
 	if cameraNode is CameraFollow:
 		cameraNode.playerNode = playerNode

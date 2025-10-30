@@ -1,9 +1,6 @@
-class_name Tower
-extends StaticBody3D
+extends Tower
 
 @onready var head : Node3D = $Head
-var health: float
-
 
 func _process(delta: float) -> void:
 	var minDist: float = INF
@@ -17,7 +14,6 @@ func _process(delta: float) -> void:
 	if closestEnemy == null:
 		return
 	
-	#var headDiff = closestEnemy.position - head.position
 	head.look_at(closestEnemy.global_position)
 	head.rotation.x = 0
 	head.rotation.z = 0

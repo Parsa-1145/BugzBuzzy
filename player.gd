@@ -20,8 +20,7 @@ var is_crouching: bool = false
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-
-
+	
 func _physics_process(delta: float) -> void:
 	handle_movement(delta)
 	rotate_toward_mouse()
