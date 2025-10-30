@@ -18,4 +18,3 @@ func _process(delta: float) -> void:
 	#var headDiff = closestEnemy.position - head.position
 	head.look_at(closestEnemy.position)
 	head.rotation.x = 90
-	

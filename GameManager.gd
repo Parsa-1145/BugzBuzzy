@@ -3,6 +3,8 @@ extends Node
 
 @onready var player_scene = preload("res://PlayerBase.tscn")
 @onready var camera_scene = preload("res://CameraBase.tscn")
+@onready var projectile_scene = preload("res://Projectile.tscn")
+
 
 var enemies : Array[EnemyBase]= []
 var towers = []
