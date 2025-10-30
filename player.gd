@@ -7,6 +7,7 @@ extends CharacterBody3D
 @export var crouch_speed: float = 2.5
 @export var jump_force: float = 10.0
 @export var gravity: float = -24.8
+@export var y_offset: float =-0.50;
 @export var mouse_sensitivity: float = 0.3
 @export var camera: CameraFollow
 
@@ -87,7 +88,7 @@ func shoot_projectile() -> void:
 	get_parent().add_child(projectile)
 	
 	# Position at player's head or slightly in front
-	var spawn_pos = global_position + Vector3(0, 1.5, 0) + -transform.basis.z
+	var spawn_pos = global_position + Vector3(0, y_offset, 0) + -transform.basis.z
 	projectile.global_position = spawn_pos
 	
 	# Direction is where the player is facing
