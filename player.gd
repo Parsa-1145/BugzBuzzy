@@ -9,6 +9,9 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.3
 @export var camera: CameraFollow
 
+@export var health: float = 10
+@export var money : int = 0
+
 var yaw: float = 0.0
 var pitch: float = 0.0
 var is_crouching: bool = false
