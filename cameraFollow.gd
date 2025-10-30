@@ -22,6 +22,5 @@ func _process(delta: float) -> void:
 	if playerNode == null:
 		return
 
-	# Smoothly move toward target + offset
 	var desired_pos = playerNode.global_position + offset
 	global_position = global_position.lerp(desired_pos, delta * speed)

@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=14 format=3 uid="uid://dk1o10mk3leno"]
 
 [ext_resource type="PackedScene" uid="uid://b15v18b8hpkj" path="res://Skeleton.tscn" id="1_hr5et"]
 [ext_resource type="Script" uid="uid://d3noh3utfelk7" path="res://HudManager.gd" id="2_g4qto"]
 [ext_resource type="Script" uid="uid://s8t65oupcxo5" path="res://Tower.gd" id="3_hr5et"]
+[ext_resource type="PackedScene" uid="uid://dxewbrqf4ah04" path="res://HogRider.tscn" id="4_61od6"]
+[ext_resource type="PackedScene" uid="uid://cqrg6jh8fuciu" path="res://Barbarian.tscn" id="5_6mfv6"]
 
 [sub_resource type="GDScript" id="GDScript_hr5et"]
 script/source = "extends StaticBody3D
@@ -122,3 +124,7 @@ mesh = SubResource("PrismMesh_61od6")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52923584, 0)
 shape = SubResource("BoxShape3D_61od6")
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("4_61od6")]
+
+[node name="CharacterBody3D3" parent="." instance=ExtResource("5_6mfv6")]
