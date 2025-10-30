@@ -1,6 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=11 format=3 uid="uid://dk1o10mk3leno"]
 
-[ext_resource type="Script" uid="uid://igjrqg4ogdhs" path="res://EnemyBase.gd" id="1_iwpey"]
+[ext_resource type="PackedScene" uid="uid://b15v18b8hpkj" path="res://Skeleton.tscn" id="1_hr5et"]
 [ext_resource type="Script" path="res://HudManager.gd" id="2_g4qto"]
 [ext_resource type="Script" uid="uid://s8t65oupcxo5" path="res://Tower.gd" id="3_hr5et"]
 
@@ -9,11 +9,6 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iwpey"]
 points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
-
-[sub_resource type="PrismMesh" id="PrismMesh_88b43"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_g4qto"]
-points = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_iwpey"]
 
@@ -42,15 +37,8 @@ shape = SubResource("ConvexPolygonShape3D_iwpey")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.21913108, -0.8623976, 0.45634627, 0, 0.46771386, 0.88387996, -0.97569543, 0.19368558, -0.10249065, 0, 29.00343, 0)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_hr5et")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.6522694, 0)
-script = ExtResource("1_iwpey")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
-mesh = SubResource("PrismMesh_88b43")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-shape = SubResource("ConvexPolygonShape3D_g4qto")
 
 [node name="Node3D" type="Node3D" parent="."]
 
