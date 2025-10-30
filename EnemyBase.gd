@@ -9,26 +9,28 @@ extends CharacterBody3D
 var nearest_tower: Node3D = null
 var current_target: Node3D = null
 
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	else:
 		velocity.y = 0.0
-
-	var target_pos = GameManager.playerNode.global_position
-	var diff = target_pos - global_position
-	diff.y = 0 
-  
-	var dir = diff.normalized()
-	velocity.x = dir.x * move_speed
-	velocity.z = dir.z * move_speed
-
+	if current_target != null:
+		var target_pos = current_target.global_position
+		var diff = target_pos - global_position
+		diff.y = 0 
+	  
+		var dir = diff.normalized()
+		velocity.x = dir.x * move_speed
+		velocity.z = dir.z * move_speed
+		
 	move_and_slide()
 
 func _update_nearest_target():
 	var targets = GameManager.towers
 	if GameManager.towers.is_empty():
 		current_target = null
+		nearest_tower = null
 		return
 	
 	var min_dist = INF

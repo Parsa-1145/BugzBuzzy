@@ -6,7 +6,6 @@ var speed : float = 3
 var offset = Vector3(0, 10, 10)
 @export var playerNode : Node3D
 
-
 func get_cursor_position_on_ground() -> Vector3:
 	var mouse_pos = get_viewport().get_mouse_position()
 	var from = project_ray_origin(mouse_pos)

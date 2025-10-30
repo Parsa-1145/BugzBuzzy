@@ -6,13 +6,22 @@ extends Node
 @onready var projectile_scene = preload("res://Projectile.tscn")
 @onready var castle_scene = preload("res://castle.tscn")
 
+var EnemyType = {
+	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn")},
+	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn")},
+	"Barbarian" : {"sceneDest" : preload("res://Barbarian.tscn")}
+}
+var ProjectileType = {
+	"Arrow" : {"sceneDest" : preload("res://Projectile.tscn")}
+}
+var TowerType = {
+	"X-Bow" : {"sceneDest" : preload("res://xBow.tscn")},
+	"Castle" : {"sceneDest" : preload("res://castle.tscn")}
+}
 var enemies : Array[EnemyBase]= []
-var towers = []
+var towers : Array[Tower] = []
 var castle: Castle
 
-var enemy_types: Array[PackedScene] = [
-	preload("res://Skeleton.tscn")
-]
 
 var playerNode: Player
 var cameraNode: CameraFollow
@@ -41,10 +50,10 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 
 func _on_timer_timeout():
-	spawnEnemy(enemy_types[0])
+	spawnEnemy(EnemyType["Skeleton"]["sceneDest"])
 
 func spawnEnemy(type: PackedScene):
 	var instance: EnemyBase = type.instantiate()
 	add_child(instance)
-	instance.position = Vector3(5, 5, 5)
+	instance.position = Vector3(randf() * 10, 10, randf() * 10)
 	enemies.append(instance)
