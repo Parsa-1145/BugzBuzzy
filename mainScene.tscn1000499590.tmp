@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://EnemyBase.gd" id="1_iwpey"]
 [ext_resource type="Script" path="res://HudManager.gd" id="2_g4qto"]
-[ext_resource type="Script" uid="uid://s8t65oupcxo5" path="res://Tower.gd" id="3_hr5et"]
+[ext_resource type="Script" path="res://Tower.gd" id="3_hr5et"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
 size = Vector3(100, 1, 100)

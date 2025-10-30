@@ -12,7 +12,10 @@ func get_cursor_position_on_ground() -> Vector3:
 	var from = project_ray_origin(mouse_pos)
 	var to = from + project_ray_normal(mouse_pos) * 1000.0
 	var plane = Plane(Vector3.UP, 0)
-	return plane.intersects_ray(from, to)
+	var res = plane.intersects_ray(from, to)
+	if res == null:
+		return Vector3.ZERO;
+	return res
 	
 func _ready() -> void:
 	var dir = offset.normalized()
