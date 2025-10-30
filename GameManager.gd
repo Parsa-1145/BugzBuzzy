@@ -6,6 +6,7 @@ extends Node
 
 var enemies : Array[EnemyBase]= []
 var towers = []
+var castle: Node3D
 
 var enemy_types: Array[PackedScene] = [
 	preload("res://Skeleton.tscn")
@@ -23,6 +24,3 @@ func _ready() -> void:
 	if cameraNode is CameraFollow:
 		cameraNode.playerNode = playerNode
 		playerNode.camera = cameraNode
-
-func spawnEnemy(type: EnemyBase):
-	var instance = type.

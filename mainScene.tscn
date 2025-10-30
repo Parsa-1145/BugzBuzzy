@@ -1,8 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=12 format=3 uid="uid://dk1o10mk3leno"]
 
 [ext_resource type="PackedScene" uid="uid://b15v18b8hpkj" path="res://Skeleton.tscn" id="1_hr5et"]
-[ext_resource type="Script" path="res://HudManager.gd" id="2_g4qto"]
+[ext_resource type="Script" uid="uid://d3noh3utfelk7" path="res://HudManager.gd" id="2_g4qto"]
 [ext_resource type="Script" uid="uid://s8t65oupcxo5" path="res://Tower.gd" id="3_hr5et"]
+
+[sub_resource type="GDScript" id="GDScript_hr5et"]
+script/source = "extends StaticBody3D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
 size = Vector3(100, 1, 100)
@@ -26,6 +40,7 @@ size = Vector3(1, 2.0584717, 1)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+script = SubResource("GDScript_hr5et")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 mesh = SubResource("BoxMesh_g4qto")
