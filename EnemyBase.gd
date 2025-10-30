@@ -1,11 +1,21 @@
 class_name EnemyBase
 extends CharacterBody3D
 
+@export var move_speed: float = 2.0
+@export var gravity: float = 9.8
+
 func _physics_process(delta: float) -> void:
-	if(!is_on_floor()):
-		velocity.y += 9.8 * delta
-func _process(delta: float) -> void:
-	var targetPos = GameManager.playerNode.position
-	var diff = targetPos - position
-	
-	position += diff.normalized() * delta * 2
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	else:
+		velocity.y = 0.0
+
+	var target_pos = GameManager.playerNode.global_position
+	var diff = target_pos - global_position
+	diff.y = 0 
+
+	var dir = diff.normalized()
+	velocity.x = dir.x * move_speed
+	velocity.z = dir.z * move_speed
+
+	move_and_slide()
