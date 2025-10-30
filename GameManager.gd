@@ -1,3 +1,4 @@
+# Game MAnager
 extends Node
 
 @onready var player_scene = preload("res://PlayerBase.tscn")
@@ -14,3 +15,4 @@ func _ready() -> void:
 	add_child(cameraNode)
 	if cameraNode is CameraFollow:
 		cameraNode.playerNode = playerNode
+		playerNode.camera = cameraNode

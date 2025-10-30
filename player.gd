@@ -1,28 +1,28 @@
+#Player
 extends CharacterBody3D
+
 
 @export var speed: float = 5.0
 @export var crouch_speed: float = 2.5
 @export var jump_force: float = 10.0
 @export var gravity: float = -24.8
 @export var mouse_sensitivity: float = 0.3
+@export var camera: CameraFollow
 
 var yaw: float = 0.0
 var pitch: float = 0.0
 var is_crouching: bool = false
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventMouseMotion:
-		#yaw -= event.relative.x * mouse_sensitivity
-		#pitch -= event.relative.y * mouse_sensitivity
-		#pitch = clamp(pitch, -90, 90)
-#
-		#rotation_degrees.y = yaw
-		#head.rotation_degrees.x = pitch
+
 
 func _physics_process(delta: float) -> void:
+	handle_movement(delta)
+	rotate_toward_mouse()
+	
+func handle_movement(delta: float) -> void:
 	var input_dir = Vector3.ZERO
 
 	if Input.is_action_pressed("move_up"):
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 		input_dir.x += 1
 
 	input_dir = input_dir.normalized()
-	var move_dir = (transform.basis * input_dir).normalized()
+	var move_dir = (input_dir).normalized()
 
 	# Choose correct speed
 	var current_speed: float
@@ -52,3 +52,20 @@ func _physics_process(delta: float) -> void:
 		velocity.y += gravity * delta
 
 	move_and_slide()
+
+
+func rotate_toward_mouse() -> void:
+	if camera == null:
+		return
+		
+	var target = camera.get_cursor_position_on_ground()
+	if target == null:
+		return
+		
+	var player_pos = global_position
+	target.y = player_pos.y
+
+	var direction = -(target - player_pos).normalized()
+
+	var target_rotation = atan2(direction.x, direction.z)
+	rotation.y = lerp_angle(rotation.y, target_rotation, 0.2)
