@@ -1,7 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk1o10mk3leno"]
-
-[ext_resource type="PackedScene" uid="uid://c1v4xjpqnirc2" path="res://PlayerBase.tscn" id="1_g4qto"]
-[ext_resource type="PackedScene" uid="uid://6084yj3aw7ci" path="res://CameraBase.tscn" id="2_hr5et"]
+[gd_scene load_steps=3 format=3 uid="uid://dk1o10mk3leno"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
 size = Vector3(100, 1, 100)
@@ -21,12 +18,5 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_iwpey")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_g4qto")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.596928, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.46771386, 0.88387996, 0, -0.88387996, 0.46771386, 0, 6.92122, 0)
-
-[node name="Camera3D" parent="." node_paths=PackedStringArray("playerNode") instance=ExtResource("2_hr5et")]
-transform = Transform3D(1, 0, 0, 0, 0.8712053, 0.49091896, 0, -0.49091896, 0.8712053, 0, 8.742341, 8.543211)
-playerNode = NodePath("../CharacterBody3D")

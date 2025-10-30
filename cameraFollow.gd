@@ -1,3 +1,4 @@
+class_name CameraFollow
 extends Camera3D
 
 var speed : float = 3

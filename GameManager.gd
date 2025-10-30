@@ -5,14 +5,12 @@ extends Node
 
 var playerNode: Node3D
 
-#func _ready() -> void:
-	#playerNode = player_scene.instantiate()
-	#add_child(playerNode)
-	#playerNode.global_position = Vector3(0, 2, 0)
-	#
-	#var cameraNode = camera_scene.instantiate()
-	#add_child(cameraNode)
-#
-	#cameraNode.setPlayer(playerNode)
-	#var test : CameraFo
-	#print("camera set")
+func _ready() -> void:
+	playerNode = player_scene.instantiate()
+	add_child(playerNode)
+	playerNode.global_position = Vector3(0, 2, 0)
+	
+	var cameraNode = camera_scene.instantiate()
+	add_child(cameraNode)
+	if cameraNode is CameraFollow:
+		cameraNode.playerNode = playerNode
