@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnfr8mvccyl81"]
+
+[ext_resource type="Script" uid="uid://c43ta8cojtx54" path="res://bomb_tower.gd" id="1_bdnna"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hr5et"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_61od6"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uv8xw"]
+top_radius = 0.065
+bottom_radius = 0.145
+height = 0.915
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bdnna"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="StaticBody3D2" type="StaticBody3D"]
+script = ExtResource("1_bdnna")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_hr5et")
+
+[node name="Head" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6002526, 0)
+mesh = SubResource("PrismMesh_61od6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
+transform = Transform3D(-1, 1.509958e-07, -6.600236e-15, 0, -4.371139e-08, -1, -1.509958e-07, -1, 4.371139e-08, 0, 0, -0.81952226)
+mesh = SubResource("CylinderMesh_uv8xw")
+
+[node name="nuzzle" type="Node3D" parent="Head"]
+transform = Transform3D(-1.0000002, 0, 8.742278e-08, 0, 1.0000002, 0, -8.74228e-08, 0, -1, 0, 0, -1.273428)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_bdnna")

@@ -4,6 +4,7 @@ extends Node
 @onready var player_scene = preload("res://PlayerBase.tscn")
 @onready var camera_scene = preload("res://CameraBase.tscn")
 @onready var projectile_scene = preload("res://Projectile.tscn")
+@onready var bomb_scene = preload("res://Bomb.tscn")
 @onready var castle_scene = preload("res://castle.tscn")
 
 var EnemyType = {
@@ -12,7 +13,8 @@ var EnemyType = {
 	"Barbarian" : {"sceneDest" : preload("res://Barbarian.tscn")}
 }
 var ProjectileType = {
-	"Arrow" : {"sceneDest" : preload("res://Projectile.tscn")}
+	"Arrow" : {"sceneDest" : preload("res://Projectile.tscn")},
+	"Bomb" : {"sceneDest" : preload("res://Bomb.tscn")},
 }
 var TowerType = {
 	"X-Bow" : {"sceneDest" : preload("res://xBow.tscn")},

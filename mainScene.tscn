@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=12 format=3 uid="uid://dk1o10mk3leno"]
 
 [ext_resource type="Script" uid="uid://d3noh3utfelk7" path="res://HudManager.gd" id="2_g4qto"]
 [ext_resource type="PackedScene" uid="uid://diag0bpotv08h" path="res://xBow.tscn" id="3_hr5et"]
+[ext_resource type="PackedScene" uid="uid://dnfr8mvccyl81" path="res://BombTower.tscn" id="4_6mfv6"]
 [ext_resource type="Script" uid="uid://okrlbq4c2jc4" path="res://TowePlaceholder.gd" id="4_61od6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
@@ -127,3 +128,6 @@ grow_vertical = 2
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="StaticBody3D3" parent="." instance=ExtResource("4_6mfv6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9981766, 2, 43.743267)

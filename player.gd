@@ -86,7 +86,6 @@ func shoot_projectile() -> void:
 	var projectile = projectile_scene.instantiate()
 	get_parent().add_child(projectile)
 	
-	# Position at player's head or slightly in front
 	var spawn_pos = global_position + Vector3(0, y_offset, 0) + -transform.basis.z
 	projectile.global_position = spawn_pos
 	
