@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://st7iyngu5eak"]
+[gd_scene load_steps=4 format=3 uid="uid://dxewbrqf4ah04"]
 
-[ext_resource type="Script" path="res://HogRider.gd" id="1_sk3ta"]
+[ext_resource type="Script" uid="uid://cuv2t50itb48i" path="res://HogRider.gd" id="1_sk3ta"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_we1jl"]
 top_radius = 1.2
