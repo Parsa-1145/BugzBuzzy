@@ -9,14 +9,6 @@ extends CharacterBody3D
 var nearest_tower: Node3D = null
 var current_target: Node3D = null
 
-func _ready() -> void:
-	var timer = Timer.new()
-	timer.wait_time = 1.0
-	timer.autostart = true
-	timer.one_shot = false
-	add_child(timer)
-	timer.timeout.connect(_update_nearest_target)
-
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
