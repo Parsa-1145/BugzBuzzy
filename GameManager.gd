@@ -23,6 +23,20 @@ func _ready() -> void:
 	if cameraNode is CameraFollow:
 		cameraNode.playerNode = playerNode
 		playerNode.camera = cameraNode
+	
+	var timer = Timer.new()
+	timer.wait_time = 2.0  # seconds
+	timer.autostart = true
+	timer.one_shot = false
+	add_child(timer)
 
-func spawnEnemy(type: EnemyBase):
-	var instance = type.
+	timer.timeout.connect(_on_timer_timeout)
+
+func _on_timer_timeout():
+	spawnEnemy(enemy_types[0])
+
+func spawnEnemy(type: PackedScene):
+	var instance: EnemyBase = type.instantiate()
+	add_child(instance)
+	instance.position = Vector3(5, 5, 5)
+	enemies.append(instance)
