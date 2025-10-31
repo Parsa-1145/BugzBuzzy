@@ -19,6 +19,7 @@ func take_damage():
 		die()
 func die():
 	GameManager.lose()
+	queue_free()
 
 func _on_mouse_entered():
 	label.visible = true
