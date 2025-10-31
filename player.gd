@@ -12,7 +12,7 @@ extends CharacterBody3D
 @export var camera: CameraFollow
 
 @export var health: float = 8
-@export var money : int = 0
+@export var money : int = 75
 
 var yaw: float = 0.0
 var pitch: float = 0.0

@@ -5,7 +5,7 @@ func _ready() -> void:
 	super._ready()
 	move_speed = 2.5
 	score = 15
-	health = 12
+	health = 8
 	var timer = Timer.new()
 	timer.wait_time = 1.0
 	timer.autostart = true

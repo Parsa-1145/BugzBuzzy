@@ -6,7 +6,7 @@ func _ready() -> void:
 	super._ready()
 	move_speed = 4
 	score = 5
-	health = 5
+	health = 4
 	enemyName = "Skeleton"
 	var timer = Timer.new()
 	timer.wait_time = 1.0
