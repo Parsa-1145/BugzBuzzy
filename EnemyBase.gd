@@ -8,6 +8,7 @@ extends CharacterBody3D
 @export var score: float = 20.0
 var nearest_tower: Node3D = null
 var current_target: Node3D = null
+var timeSinceLastAttack: float = 0
 
 var enemyName: String
 var currentAction : String = "Idle"
@@ -71,9 +72,20 @@ func take_damage(amount: float) -> void:
 func die() -> void:
 	queue_free()
 	GameManager.enemies.erase(self)
+	GameManager.playerNode.money += score
 	
 func _process(delta: float) -> void:
 	animTimeState += delta
+	timeSinceLastAttack += delta
+	if (current_target) == null:
+		pass
+	elif(global_position.distance_to(current_target.global_position) < 10.0 && velocity.length() < 1):
+		if not (timeSinceLastAttack < 0.8) :
+			timeSinceLastAttack = 0
+			if current_target is Tower:
+				current_target.take_damage()
+			elif current_target is Player:
+				current_target.take_damage()
 
 	var anim : Array = AnimationManager.animation_map[enemyName][currentAction][prevDirection]
 	sprite3D.texture = anim[int(floor(animTimeState * 12)) % anim.size()]

@@ -2,6 +2,9 @@ class_name Barbarian
 extends EnemyBase
 
 func _ready() -> void:
+	move_speed = 2.5
+	score = 15
+	health = 12
 	var timer = Timer.new()
 	timer.wait_time = 1.0
 	timer.autostart = true
