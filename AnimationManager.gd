@@ -9,6 +9,7 @@ func _ready() -> void:
 			animation_map[enemy_name] = {}
 			loadAnim("Walking", enemy_name, GameManager.EnemyType[enemy_name]["animFolder"], 8)
 			loadAnim("Idle", enemy_name, GameManager.EnemyType[enemy_name]["animFolder"], 1, 8 * 9)
+			loadAnim("Attack", enemy_name, GameManager.EnemyType[enemy_name]["animFolder"], GameManager.EnemyType[enemy_name]["attackFrames"], 8 * 9 + 9)
 
 func loadAnim(action: String, enemyType: String, animFolder: String, framesPerDir: int, offset: int = 0):
 	animation_map[enemyType][action] = {}

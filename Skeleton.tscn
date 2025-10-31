@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://b15v18b8hpkj"]
+[gd_scene load_steps=5 format=3 uid="uid://b15v18b8hpkj"]
 
 [ext_resource type="Script" uid="uid://csr6gc7qhmgko" path="res://Skeleton.gd" id="1_bx3f0"]
+[ext_resource type="Texture2D" uid="uid://bixxmvdrsdkhn" path="res://Assets/Animations/Skeleton/0002.png" id="2_qg60r"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bx3f0"]
-size = Vector3(1.7451172, 1, 2.0742188)
+size = Vector3(0.99884033, 1, 1.2951355)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppgkr"]
+size = Vector3(1.5181885, 1.2558594, 1.8423462)
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
@@ -11,8 +15,17 @@ collision_layer = 2
 script = ExtResource("1_bx3f0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09500122, 0.5400001, -0.19770813)
 shape = SubResource("BoxShape3D_bx3f0")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 1.1309121, 0)
+texture = ExtResource("2_qg60r")
+
+[node name="hitArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0758667, 0.63576984, -0.2814026)
+shape = SubResource("BoxShape3D_ppgkr")
+
+[node name="AttackTimer" type="Timer" parent="."]

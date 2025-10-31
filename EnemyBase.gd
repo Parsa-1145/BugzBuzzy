@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 	
-	if(velocity.length() <= 0.3):
+	if(currentAction != "Attack" and velocity.length() <= 0.3):
 		currentAction = "Idle"
 	else:
 		currentAction = "Walking"
@@ -77,11 +77,29 @@ func die() -> void:
 func _process(delta: float) -> void:
 	animTimeState += delta
 	timeSinceLastAttack += delta
+	
+	#if(currentAction == "Attack"):
+		#if(animTimeState >= AnimationManager.animation_map[enemyName][currentAction].size() * 5):
+			#currentAction = "Idle"
+			#animTimeState = 0
+	
 	if (current_target) == null:
 		pass
 	elif(global_position.distance_to(current_target.global_position) < 10.0 && velocity.length() < 1):
+		currentAction = "Attack"
 		if not (timeSinceLastAttack < 0.8) :
 			timeSinceLastAttack = 0
+			animTimeState = 0
+			
+			var diff : Vector3 = current_target.global_position - global_position
+			var angle = atan2(diff.x, diff.z)  # note: x,z order!
+		
+		# Convert to degrees and normalize to [0, 360)
+			var deg = fposmod(rad_to_deg(angle), 360.0)
+			
+			# Map 360° into 16 equal slices (each = 22.5°)
+			prevDirection = int(round(deg / 22.5)) % 16
+				
 			if current_target is Tower:
 				current_target.take_damage()
 			elif current_target is Player:
