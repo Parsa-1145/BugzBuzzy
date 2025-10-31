@@ -9,6 +9,12 @@ extends CharacterBody3D
 var nearest_tower: Node3D = null
 var current_target: Node3D = null
 
+var enemyName: String
+var currentAction : String = "Idle"
+var animTimeState : float = 0
+var prevDirection : int = 0
+
+@onready var sprite3D: Sprite3D = $Sprite3D
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -25,6 +31,19 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dir.z * move_speed
 		
 	move_and_slide()
+	
+	if(velocity.length() <= 0.3):
+		currentAction = "Idle"
+	else:
+		currentAction = "Walking"
+		
+		var angle = atan2(velocity.x, velocity.z)  # note: x,z order!
+		
+		# Convert to degrees and normalize to [0, 360)
+		var deg = fposmod(rad_to_deg(angle), 360.0)
+		
+		# Map 360° into 16 equal slices (each = 22.5°)
+		prevDirection = int(round(deg / 22.5)) % 16
 
 func _update_nearest_target():
 	var targets = GameManager.towers
@@ -52,3 +71,9 @@ func take_damage(amount: float) -> void:
 func die() -> void:
 	queue_free()
 	GameManager.enemies.erase(self)
+	
+func _process(delta: float) -> void:
+	animTimeState += delta
+
+	var anim : Array = AnimationManager.animation_map[enemyName][currentAction][prevDirection]
+	sprite3D.texture = anim[int(floor(animTimeState * 12)) % anim.size()]

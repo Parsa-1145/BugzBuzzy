@@ -1,22 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://st7iyngu5eak"]
+[gd_scene load_steps=3 format=3 uid="uid://st7iyngu5eak"]
 
 [ext_resource type="Script" uid="uid://cuv2t50itb48i" path="res://HogRider.gd" id="1_sk3ta"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_sk3ta"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_svts0"]
-albedo_color = Color(0.35171878, 0.1865131, 0.020304656, 1)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_op6a0"]
+size = Vector3(1.7451172, 1, 2.0742188)
 
 [node name="CharacterBody3D2" type="CharacterBody3D"]
 script = ExtResource("1_sk3ta")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5003611, 0)
-mesh = SubResource("PrismMesh_sk3ta")
-surface_material_override/0 = SubResource("StandardMaterial3D_svts0")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5003611, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.54, 0)
 shape = SubResource("BoxShape3D_op6a0")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1.5, 0, 0, 0, 1.0606601, 1.0606601, 0, -1.0606601, 1.0606601, 0, 1.1309121, 0)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddn1sakxy8qs5"]
+
+[ext_resource type="PackedScene" uid="uid://bv85vxjsoqlv4" path="res://Assets/Models/XBow/xbowHead.fbx" id="1_mio0g"]
+
+[node name="xbowHead" instance=ExtResource("1_mio0g")]
+
+[node name="Plane_002" parent="." index="0"]
+transform = Transform3D(100, 0, 0, 0, -1.1920929e-05, 99.99999, 0, -99.99999, -1.1920929e-05, 0.02127661, -0.5673086, 0.081258275)

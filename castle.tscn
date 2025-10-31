@@ -1,32 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://deumq08k3ujn6"]
+[gd_scene load_steps=4 format=3 uid="uid://deumq08k3ujn6"]
 
 [ext_resource type="Script" uid="uid://brfujftq1fsp0" path="res://Castle.gd" id="1_xtwgx"]
+[ext_resource type="PackedScene" uid="uid://c4gmn0eu7afec" path="res://town_hall.tscn" id="2_vm22h"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_6mfv6"]
-size = Vector3(3.165, 2.695, 2.955)
+[sub_resource type="BoxShape3D" id="BoxShape3D_1gkcl"]
+size = Vector3(2.8322754, 1.5665283, 2.0185547)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6mfv6"]
-points = PackedVector3Array(-1.5825, -1.3475, -1.4775, -1.5825, 1.3475, -1.4775, 1.5821903, -1.3475, -1.4775, -1.5825, -1.3475, 1.4775, -1.5825, 1.3475, 1.4775, 1.5821903, 1.3475, -1.4775, 1.5821903, -1.3475, 1.4775, 1.5821903, 1.3475, 1.4775)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_2qqqv"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_we1jl"]
-
-[node name="StaticBody3D3" type="StaticBody3D"]
+[node name="StaticBody3D2" type="StaticBody3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_xtwgx")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2817497, 0)
-mesh = SubResource("BoxMesh_6mfv6")
+[node name="townHall2" parent="." instance=ExtResource("2_vm22h")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.67978597, 0.61780787, -0.0477283)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2817497, 0)
-shape = SubResource("ConvexPolygonShape3D_6mfv6")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.925, 0, 0, 0, 1.925, 0, 0, 0, 1.925, 0, 4.3482437, 0)
-mesh = SubResource("CylinderMesh_2qqqv")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1067884, 0)
-mesh = SubResource("TorusMesh_we1jl")
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.18023694, 0.7512789, 0.67978597)
+shape = SubResource("BoxShape3D_1gkcl")
