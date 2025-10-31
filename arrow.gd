@@ -16,3 +16,6 @@ func _on_body_entered(body: Node) -> void:
 	if body is EnemyBase:
 		body.take_damage(damage)
 	queue_free()
+	
+	
+	
