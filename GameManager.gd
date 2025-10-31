@@ -7,6 +7,7 @@ extends Node
 @onready var bomb_scene = preload("res://Bomb.tscn")
 @onready var castle_scene = preload("res://castle.tscn")
 
+var done = false
 var EnemyType = {
 	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn"), "animFolder" : "res://Assets/Animations/HogRider/"},
 	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn"), "animFolder" : "res://Assets/Animations/Skeleton/"},
@@ -77,4 +78,4 @@ func spawnEnemy(type: PackedScene):
 
 func lose():
 	print("You lost")
-	queue_free()
+	done = true
