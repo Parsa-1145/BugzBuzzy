@@ -5,7 +5,7 @@ extends MarginContainer
 @onready var timeLabel : Label = $VBoxContainer/HBoxContainer/TimeLabel
 func _process(delta: float) -> void:
 	money_label.text = "gold: " + str(GameManager.playerNode.money)
-	health_bar.max_value = 10
+	health_bar.max_value = 8
 	health_bar.value = GameManager.playerNode.health
 	
 	var total_seconds = GameManager.timeLeft

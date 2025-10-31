@@ -12,3 +12,10 @@ func _ready() -> void:
 	add_child(timer)
 	timer.timeout.connect(_update_nearest_target)
 	enemyName = "Barbarian"
+	current_target = GameManager.castle
+
+	
+	
+func _process(delta: float) -> void:
+	super._process(delta)
+	current_target = nearest_tower
