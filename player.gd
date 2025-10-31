@@ -96,4 +96,4 @@ func shoot_projectile() -> void:
 func take_damage():
 	health -= 1
 	if (health <= 0):
-		print("You lost")
+		GameManager.lose()
