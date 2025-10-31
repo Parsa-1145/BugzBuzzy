@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c5vmexufaxajf" path="res://TowerPurchaseMenu.gd" id="3_61od6"]
 [ext_resource type="PackedScene" uid="uid://diag0bpotv08h" path="res://xBow.tscn" id="3_hr5et"]
-[ext_resource type="PackedScene" path="res://BombTower.tscn" id="4_6mfv6"]
+[ext_resource type="PackedScene" uid="uid://dnfr8mvccyl81" path="res://BombTower.tscn" id="4_6mfv6"]
 [ext_resource type="Script" uid="uid://okrlbq4c2jc4" path="res://TowePlaceholder.gd" id="4_61od6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
