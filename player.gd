@@ -18,7 +18,9 @@ var yaw: float = 0.0
 var pitch: float = 0.0
 var is_crouching: bool = false
 
+
 func _ready() -> void:
+	print("Welcome, %s!" % GameManager.solver_group_id)
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	

@@ -9,6 +9,8 @@ extends Node
 @onready var towerPurchaseDialoge = preload("res://TowerPurchaseDialoge.tscn")
 
 var done = false
+@export var won = false
+@export var solver_group_id : String = ""
 var EnemyType = {
 	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn"), "animFolder" : "res://Assets/Animations/HogRider/"},
 	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn"), "animFolder" : "res://Assets/Animations/Skeleton/"},
@@ -106,18 +108,69 @@ func spawnEnemy(type: PackedScene):
 	instance.position = Vector3(x, 2, y)
 	enemies.append(instance)
 
-func lose():
-	var dialoge : EndGameDialog = preload("res://EndGameDialoge.tscn").instantiate()
-	if dialoge is EndGameDialog:
-		dialoge.setState("You Lost")
-	get_tree().current_scene.get_node("HUD").add_child(dialoge)
-	done = true
 func win():
-	var dialoge : EndGameDialog = preload("res://EndGameDialoge.tscn").instantiate()
-	if dialoge is EndGameDialog:
-		dialoge.setState("You Survived")
-	get_tree().current_scene.get_node("HUD").add_child(dialoge)
-	done = true
+	won = true
+
+	# Stop all timers and gameplay activity
+	skeletonTimer.stop()
+	hogTimer.stop()
+	BarTimer.stop()
+
+	# Clean up enemies
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	enemies.clear()
+
+	# Clean up towers
+	for tower in towers:
+		if is_instance_valid(tower):
+			tower.queue_free()
+	towers.clear()
+
+	# Remove player, camera, and castle
+	if is_instance_valid(playerNode):
+		playerNode.queue_free()
+	if is_instance_valid(cameraNode):
+		cameraNode.queue_free()
+	if is_instance_valid(castle):
+		castle.queue_free()
+
+	# Load the Win Scene
+	var win_scene = preload("res://preMainScene.tscn")
+	get_tree().change_scene_to_packed(win_scene)
+
+func lose():
+	# Stop all timers and gameplay activity
+	skeletonTimer.stop()
+	hogTimer.stop()
+	BarTimer.stop()
+
+	# Clean up enemies
+	for enemy in enemies:
+		if is_instance_valid(enemy):
+			enemy.queue_free()
+	enemies.clear()
+
+	# Clean up towers
+	for tower in towers:
+		if is_instance_valid(tower):
+			tower.queue_free()
+	towers.clear()
+
+	# Remove player, camera, and castle
+	if is_instance_valid(playerNode):
+		playerNode.queue_free()
+	if is_instance_valid(cameraNode):
+		cameraNode.queue_free()
+	if is_instance_valid(castle):
+		castle.queue_free()
+
+	# Load the Lose Scene
+	var lose_scene = preload("res://preMainScene.tscn")
+	get_tree().change_scene_to_packed(lose_scene)
+
+
 func _process(delta: float) -> void:
 	timeLeft -= delta
 	if timeLeft <= 0:
