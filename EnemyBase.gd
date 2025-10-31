@@ -16,7 +16,14 @@ var animTimeState : float = 0
 var prevDirection : int = 0
 
 @onready var sprite3D: Sprite3D = $Sprite3D
+@onready var hitArea : Area3D = $hitArea
 
+var target_in_range: bool = false
+
+func _ready() -> void:
+	hitArea.connect("body_entered", _on_body_entered)
+	hitArea.connect("body_exited", _on_body_exited)
+	
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -85,9 +92,9 @@ func _process(delta: float) -> void:
 	
 	if (current_target) == null:
 		pass
-	elif(global_position.distance_to(current_target.global_position) < 10.0 && velocity.length() < 1):
+	elif(target_in_range):
 		currentAction = "Attack"
-		if not (timeSinceLastAttack < 0.8) :
+		if not (timeSinceLastAttack < 1.8) :
 			timeSinceLastAttack = 0
 			animTimeState = 0
 			
@@ -107,3 +114,11 @@ func _process(delta: float) -> void:
 
 	var anim : Array = AnimationManager.animation_map[enemyName][currentAction][prevDirection]
 	sprite3D.texture = anim[int(floor(animTimeState * 12)) % anim.size()]
+
+func _on_body_entered(body):
+	if body == current_target:
+		target_in_range = true
+
+func _on_body_exited(body):
+	if body == current_target:
+		target_in_range = false

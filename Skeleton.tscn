@@ -27,5 +27,3 @@ texture = ExtResource("2_qg60r")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hitArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0758667, 0.63576984, -0.2814026)
 shape = SubResource("BoxShape3D_ppgkr")
-
-[node name="AttackTimer" type="Timer" parent="."]

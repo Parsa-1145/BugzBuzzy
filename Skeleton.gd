@@ -3,6 +3,7 @@ extends EnemyBase
 
 
 func _ready() -> void:
+	super._ready()
 	move_speed = 4
 	score = 5
 	health = 5

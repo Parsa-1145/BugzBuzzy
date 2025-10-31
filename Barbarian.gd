@@ -2,6 +2,7 @@ class_name Barbarian
 extends EnemyBase
 
 func _ready() -> void:
+	super._ready()
 	move_speed = 2.5
 	score = 15
 	health = 12
