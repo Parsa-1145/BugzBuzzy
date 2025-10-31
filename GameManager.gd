@@ -12,9 +12,9 @@ var done = false
 @export var won = false
 @export var solver_group_id : String = ""
 var EnemyType = {
-	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn"), "animFolder" : "res://Assets/Animations/HogRider/"},
-	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn"), "animFolder" : "res://Assets/Animations/Skeleton/"},
-	"Barbarian" : {"sceneDest" : preload("res://Barbarian.tscn"), "animFolder" : "res://Assets/Animations/Barbarian/"}
+	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn"), "animFolder" : "res://Assets/Animations/HogRider/", "attackFrames" : 9},
+	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn"), "animFolder" : "res://Assets/Animations/Skeleton/", "attackFrames" : 4},
+	"Barbarian" : {"sceneDest" : preload("res://Barbarian.tscn"), "animFolder" : "res://Assets/Animations/Barbarian/", "attackFrames" : 9}
 }
 var ProjectileType = {
 	"Arrow" : {"sceneDest" : preload("res://Projectile.tscn")},
@@ -78,17 +78,16 @@ func _ready() -> void:
 	hogTimer.timeout.connect(pawnHog)
 	
 func spawnSkel():
-	for i in range(0, 2):
-		spawnEnemy(EnemyType["Skeleton"]["sceneDest"])
+	#for i in range(0, 2):
+	spawnEnemy(EnemyType["Skeleton"]["sceneDest"])
 
 func spawnBar():
-	for i in range(0, 2):
-		spawnEnemy(EnemyType["Barbarian"]["sceneDest"])
-
+	#for i in range(0, 2):
+	spawnEnemy(EnemyType["Barbarian"]["sceneDest"])
 
 func pawnHog():
-	for i in range(0, 2):
-		spawnEnemy(EnemyType["Hog Rider"]["sceneDest"])
+	#for i in range(0, 2):
+	spawnEnemy(EnemyType["Hog Rider"]["sceneDest"])
 
 
 func spawnEnemy(type: PackedScene):
@@ -178,20 +177,20 @@ func _process(delta: float) -> void:
 		
 		
 	if(timeLeft<=120 && timeLeft + delta > 120):
-		BarTimer.wait_time = 3.5
+		BarTimer.wait_time = 3.5 * (2 / 3.0)
 		BarTimer.start()
 	elif(timeLeft<=45 && timeLeft + delta > 45):
-		BarTimer.wait_time = 2
+		BarTimer.wait_time = 2 * (2 / 3.0)
 		BarTimer.start()
 	
 	if(timeLeft<=60 && timeLeft + delta > 60):
-		skeletonTimer.wait_time = 1.5
+		skeletonTimer.wait_time = 1.5 * (2 / 3.0)
 		skeletonTimer.start()
 		
 	if(timeLeft<=90 && timeLeft + delta > 90):
-		hogTimer.wait_time = 5
+		hogTimer.wait_time = 5 * (2 / 3.0)
 		hogTimer.start()
 	
 	if(timeLeft<=30 && timeLeft + delta > 30):
-		hogTimer.wait_time = 2.5
+		hogTimer.wait_time = 2.5 * (2 / 3.0)
 		hogTimer.start()
