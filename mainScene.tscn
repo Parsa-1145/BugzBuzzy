@@ -1,26 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://dk1o10mk3leno"]
+[gd_scene load_steps=9 format=3 uid="uid://dk1o10mk3leno"]
 
-[ext_resource type="Script" uid="uid://d3noh3utfelk7" path="res://HudManager.gd" id="2_g4qto"]
+[ext_resource type="Script" uid="uid://c5vmexufaxajf" path="res://TowerPurchaseMenu.gd" id="3_61od6"]
 [ext_resource type="PackedScene" uid="uid://diag0bpotv08h" path="res://xBow.tscn" id="3_hr5et"]
 [ext_resource type="Script" uid="uid://okrlbq4c2jc4" path="res://TowePlaceholder.gd" id="4_61od6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_g4qto"]
-size = Vector3(100, 1, 100)
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iwpey"]
-points = PackedVector3Array(-50, -0.5, -50, -50, 0.5, -50, 50, -0.5, -50, -50, -0.5, 50, -50, 0.5, 50, 50, 0.5, -50, 50, -0.5, 50, 50, 0.5, 50)
-
-[sub_resource type="BoxMesh" id="BoxMesh_iwpey"]
+size = Vector3(170, 1, 170)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hr5et"]
-points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+points = PackedVector3Array(86.3492, 0.8492062, 86.3492, -86.3492, -1.8492062, -86.3492, -86.3492, 0.8492062, -86.3492, 86.3492, -1.8492062, -86.3492, -86.3492, -1.8492062, 86.3492, -86.3492, 0.8492062, 86.3492, 86.3492, 0.8492062, -86.3492, 86.3492, -1.8492062, 86.3492)
 
-[sub_resource type="TorusMesh" id="TorusMesh_2qqqv"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_hr5et"]
+size = Vector3(2.7235107, 21.839844, 122.52002)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_we1jl"]
-points = PackedVector3Array(-0.97744143, 0.049764834, -0.18312658, 0.9774394, 0.049767062, 0.18313551, 0.9784049, -0.04182494, 0.1833164, -0.18351372, -0.041821305, 0.978376, -0.11702969, -0.24486797, -0.7902605, 0.25877878, 0.24850625, -0.71911687, -0.14399064, 0.24875438, 0.7487126, -0.3805545, -0.24498063, 0.70291454, 0.76708823, -0.21733022, -0.4127724, -0.5900629, 0.22526969, -0.6196291, 0.5235438, -0.24330005, 0.61069316, 0.5597305, 0.22491772, 0.6479886, -0.78067034, 0.16910996, 0.5103477, -0.8599503, -0.21848288, 0.11854925, 0.39532635, 0.049568705, -0.91228336, 0.8007586, 0.19678749, -0.41499034, -0.5424449, -0.10144918, -0.81355554, 0.45675743, 0.049633868, 0.8832485, -0.7487183, 0.24875413, -0.14396916, -0.15199271, 0.079948075, -0.97277045, -0.8135618, -0.101449355, 0.5424342, 0.74868, 0.24875784, 0.14397135, -0.7027667, -0.24499057, -0.38073763, 0.12000745, -0.16120075, -0.9309316, 0.850308, -0.041520163, -0.516225, 0.14946537, -0.19034863, 0.8969633, 0.7902525, -0.24487938, 0.11682966, 0.75638217, -0.07161803, 0.6352837, -0.30216888, 0.14003108, 0.90702254, -0.8772622, -0.071607776, -0.4537938, 0.4767621, -0.18975163, -0.7750546, 0.18160948, 0.14029223, 0.9391314)
+[sub_resource type="TorusMesh" id="TorusMesh_hr5et"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hr5et"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_61od6"]
+size = Vector3(2.5998535, 1.767334, 3.2388306)
 
 [node name="Node3D" type="Node3D"]
 
@@ -32,98 +28,236 @@ mesh = SubResource("BoxMesh_g4qto")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_iwpey")
+shape = SubResource("ConvexPolygonShape3D_hr5et")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.21913108, -0.8623976, 0.45634627, 0, 0.46771386, 0.88387996, -0.97569543, 0.19368558, -0.10249065, 0, 29.00343, 0)
 
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="Node3D"]
-transform = Transform3D(2.635, 0, 0, 0, 2.635, 0, 0, 0, 2.635, -4.3791423, 1.2868538, -8.437578)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D2"]
-mesh = SubResource("BoxMesh_iwpey")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D2"]
-shape = SubResource("ConvexPolygonShape3D_hr5et")
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="Node3D"]
-transform = Transform3D(2.635, 0, 0, 0, 2.635, 0, 0, 0, 2.635, 11.640102, 1.2868547, 13.9965725)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D3"]
-mesh = SubResource("BoxMesh_iwpey")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D3"]
-shape = SubResource("ConvexPolygonShape3D_hr5et")
-
-[node name="StaticBody3D4" type="StaticBody3D" parent="Node3D"]
-transform = Transform3D(2.635, 0, 0, 0, 2.635, 0, 0, 0, 2.635, -7.9857597, 1.2868538, 3.6460485)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D4"]
-mesh = SubResource("BoxMesh_iwpey")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D4"]
-shape = SubResource("ConvexPolygonShape3D_hr5et")
-
-[node name="StaticBody3D5" type="StaticBody3D" parent="Node3D"]
-transform = Transform3D(2.635, 0, 0, 0, 2.635, 0, 0, 0, 2.635, 12.73868, 1.2868538, -8.844818)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D5"]
-mesh = SubResource("BoxMesh_iwpey")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D5"]
-shape = SubResource("ConvexPolygonShape3D_hr5et")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-script = ExtResource("2_g4qto")
-
-[node name="TopLeft" type="VBoxContainer" parent="CanvasLayer"]
-offset_left = 17.0
-offset_top = 16.0
-offset_right = 503.0
-offset_bottom = 168.0
-
-[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/TopLeft"]
-layout_mode = 2
-
-[node name="MoneyLabel" type="Label" parent="CanvasLayer/TopLeft"]
-layout_mode = 2
-
-[node name="StaticBody3D2" parent="." instance=ExtResource("3_hr5et")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.707549, 0.5, -6.8906927)
-
-[node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("4_61od6")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
-mesh = SubResource("TorusMesh_2qqqv")
-skeleton = NodePath("../..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("ConvexPolygonShape3D_we1jl")
-
-[node name="Label" type="Label3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95237595, 0)
-text = "asdasdasd"
-font_size = 122
-
 [node name="Control" type="Control" parent="."]
-material = SubResource("CanvasItemMaterial_hr5et")
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -50.0
-offset_right = 200.0
-offset_bottom = 50.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Control" type="Control" parent="Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+script = ExtResource("3_61od6")
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+color = Color(0.8753943, 0.7304872, 0.56625265, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Choose a tower"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4651162, 0.40699777, 0.25906718, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="TowerImageBox" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TowerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasdasd"
+
+[node name="TowerPriceLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasd"
+
+[node name="ColorRect2" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4651162, 0.40699777, 0.25906718, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer"]
+layout_mode = 2
+
+[node name="TowerImageBox" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TowerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasdasd"
+
+[node name="TowerPriceLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasd"
+
+[node name="ColorRect3" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4651162, 0.40699777, 0.25906718, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect3/MarginContainer"]
+layout_mode = 2
+
+[node name="TowerImageBox" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TowerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasdasd"
+
+[node name="TowerPriceLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect3/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasd"
+
+[node name="ColorRect4" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4651162, 0.40699777, 0.25906718, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect4/MarginContainer"]
+layout_mode = 2
+
+[node name="TowerImageBox" type="ColorRect" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TowerNameLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasdasd"
+
+[node name="TowerPriceLabel" type="Label" parent="Control/MarginContainer/VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect4/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasd"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Control/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(3.435, 25.34)
+layout_mode = 2
+
+[node name="StaticBody3D2" parent="." instance=ExtResource("3_hr5et")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -11.10263, 0.17085719, 1.2881069)
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+collision_layer = 4
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 10, -60)
+shape = SubResource("BoxShape3D_hr5et")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 10, 60)
+shape = SubResource("BoxShape3D_hr5et")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60, 10, 0)
+shape = SubResource("BoxShape3D_hr5et")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 10, 0)
+shape = SubResource("BoxShape3D_hr5et")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.9806185, 0, 0)
+script = ExtResource("4_61od6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("TorusMesh_hr5et")
+
+[node name="Label" type="Label3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99562514, 0)
+text = "asdasddasd"
+font_size = 100
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0748291, 0.39001465, -0.6319885)
+shape = SubResource("BoxShape3D_61od6")

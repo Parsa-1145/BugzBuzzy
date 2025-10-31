@@ -1,36 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://diag0bpotv08h"]
+[gd_scene load_steps=5 format=3 uid="uid://diag0bpotv08h"]
 
 [ext_resource type="Script" uid="uid://c4s5gvfk5vlqq" path="res://Xbow.gd" id="1_uv8xw"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_hr5et"]
-
-[sub_resource type="PrismMesh" id="PrismMesh_61od6"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_uv8xw"]
-top_radius = 0.065
-bottom_radius = 0.145
-height = 0.915
+[ext_resource type="PackedScene" uid="uid://dn7n2d5vlv4ln" path="res://Assets/Models/XBow/xbowBase.fbx" id="2_vgm0q"]
+[ext_resource type="PackedScene" uid="uid://ckqxwvgch4fof" path="res://Assets/Models/XBow/xbowHead.fbx" id="3_u6e88"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_61od6"]
-size = Vector3(1, 2.0584717, 1)
+size = Vector3(1, 0.24911308, 1)
 
 [node name="StaticBody3D2" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_uv8xw")
 
-[node name="Body" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_hr5et")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1.61, 0, 0, 0, 1.61, 0, 0, 0, 1.61, 0, 0.25260645, 0)
+shape = SubResource("BoxShape3D_61od6")
 
-[node name="Head" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0783617, 0)
-mesh = SubResource("PrismMesh_61od6")
+[node name="xbowBase" parent="." instance=ExtResource("2_vgm0q")]
+transform = Transform3D(1.61, 0, 0, 0, 1.61, 0, 0, 0, 1.61, 0.02705717, -0.085428, 0.03269279)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head"]
-transform = Transform3D(-1, 8.742278e-08, -3.821371e-15, 0, -4.371139e-08, -1, -8.742278e-08, -1, 4.371139e-08, 0, 0, -0.81952226)
-mesh = SubResource("CylinderMesh_uv8xw")
+[node name="Head" parent="." instance=ExtResource("3_u6e88")]
+transform = Transform3D(1.61, 0, 0, 0, 1.61, 0, 0, 0, 1.61, 0.03374417, 0.85875064, 0.035020947)
 
 [node name="nuzzle" type="Node3D" parent="Head"]
-transform = Transform3D(-1.0000002, 0, -8.742278e-08, 0, 1.0000002, 0, 8.74228e-08, 0, -1, 0, 0, -1.273428)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52923584, 0)
-shape = SubResource("BoxShape3D_61od6")
+transform = Transform3D(-1, 0, -1.509958e-07, 0, 1, 0, 1.509958e-07, 0, -1, 0, 0, -0.3788309)

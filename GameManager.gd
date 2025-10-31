@@ -7,9 +7,9 @@ extends Node
 @onready var castle_scene = preload("res://castle.tscn")
 
 var EnemyType = {
-	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn")},
-	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn")},
-	"Barbarian" : {"sceneDest" : preload("res://Barbarian.tscn")}
+	"Hog Rider" : {"sceneDest" : preload("res://HogRider.tscn"), "animFolder" : "res://Assets/Animations/HogRider/"},
+	"Skeleton"  : {"sceneDest" : preload("res://Skeleton.tscn"), "animFolder" : "res://Assets/Animations/Skeleton/"},
+	"Barbarian" : {"sceneDest" : preload("res://Barbarian.tscn"), "animFolder" : "res://Assets/Animations/Barbarian/"}
 }
 var ProjectileType = {
 	"Arrow" : {"sceneDest" : preload("res://Projectile.tscn")}
@@ -22,7 +22,6 @@ var enemies : Array[EnemyBase]= []
 var towers : Array[Tower] = []
 var castle: Castle
 
-
 var playerNode: Player
 var cameraNode: CameraFollow
 
@@ -32,6 +31,8 @@ func _ready() -> void:
 	playerNode.global_position = Vector3(0, 2, 0)
 	
 	cameraNode = camera_scene.instantiate()
+	cameraNode.projection = Camera3D.PROJECTION_ORTHOGONAL
+	cameraNode.size = 20.0  # increase this number to zoom out
 	add_child(cameraNode)
 	if cameraNode is CameraFollow:
 		cameraNode.playerNode = playerNode
@@ -50,10 +51,24 @@ func _ready() -> void:
 	timer.timeout.connect(_on_timer_timeout)
 
 func _on_timer_timeout():
-	spawnEnemy(EnemyType["Skeleton"]["sceneDest"])
+	var enemy_keys = ["Hog Rider", "Skeleton", "Barbarian"]
+	var index = randi_range(0, enemy_keys.size() - 1)
+	var key = enemy_keys[index]
+	spawnEnemy(EnemyType[key]["sceneDest"])
 
 func spawnEnemy(type: PackedScene):
 	var instance: EnemyBase = type.instantiate()
 	add_child(instance)
-	instance.position = Vector3(randf() * 10, 10, randf() * 10)
+	var x = randf() * 20 - 10
+	var y = randf() * 20 - 10
+	
+	if x > 0:
+		x += 65
+	else:
+		x -= 65
+	if y > 0:
+		y += 65
+	else:
+		y -= 65
+	instance.position = Vector3(x, 2, y)
 	enemies.append(instance)

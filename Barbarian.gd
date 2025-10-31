@@ -8,7 +8,4 @@ func _ready() -> void:
 	timer.one_shot = false
 	add_child(timer)
 	timer.timeout.connect(_update_nearest_target)
-	
-func _process(delta: float) -> void:
-	current_target = null
-	current_target = nearest_tower
+	enemyName = "Barbarian"
