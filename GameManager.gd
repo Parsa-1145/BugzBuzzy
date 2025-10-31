@@ -6,6 +6,7 @@ extends Node
 @onready var projectile_scene = preload("res://Projectile.tscn")
 @onready var bomb_scene = preload("res://Bomb.tscn")
 @onready var castle_scene = preload("res://castle.tscn")
+@onready var towerPurchaseDialoge = preload("res://TowerPurchaseDialoge.tscn")
 
 var done = false
 var EnemyType = {
@@ -18,7 +19,8 @@ var ProjectileType = {
 	"Bomb" : {"sceneDest" : preload("res://Bomb.tscn")},
 }
 var TowerType = {
-	"X-Bow" : {"sceneDest" : preload("res://xBow.tscn")},
+	"X-Bow" : {"sceneDest" : preload("res://xBow.tscn"), "price" : 60},
+	"Bomb Tower" : {"sceneDest" : preload("res://BombTower.tscn"), "price": 90},
 	"Castle" : {"sceneDest" : preload("res://castle.tscn")}
 }
 var enemies : Array[EnemyBase]= []
@@ -27,6 +29,13 @@ var castle: Castle
 
 var playerNode: Player
 var cameraNode: CameraFollow
+
+var timeLeft: float = 150
+
+
+var skeletonTimer: Timer
+var hogTimer: Timer
+var BarTimer: Timer
 
 func _ready() -> void:
 	playerNode = player_scene.instantiate()
@@ -45,19 +54,40 @@ func _ready() -> void:
 	add_child(castle)
 	castle.position = Vector3(3, 0, 3)
 	
-	var timer = Timer.new()
-	timer.wait_time = 2.0  # seconds
-	timer.autostart = true
-	timer.one_shot = false
-	add_child(timer)
+	skeletonTimer = Timer.new()
+	skeletonTimer.wait_time = 3  # seconds
+	skeletonTimer.autostart = true
+	skeletonTimer.one_shot = false
+	add_child(skeletonTimer)
+	skeletonTimer.timeout.connect(spawnSkel)
+	
+	BarTimer = Timer.new()
+	BarTimer.wait_time = INF  # seconds
+	BarTimer.autostart = true
+	BarTimer.one_shot = false
+	add_child(BarTimer)
+	BarTimer.timeout.connect(spawnBar)
 
-	timer.timeout.connect(_on_timer_timeout)
+	hogTimer = Timer.new()
+	hogTimer.wait_time = INF  # seconds
+	hogTimer.autostart = true
+	hogTimer.one_shot = false
+	add_child(hogTimer)
+	hogTimer.timeout.connect(pawnHog)
+	
+func spawnSkel():
+	for i in range(0, 2):
+		spawnEnemy(EnemyType["Skeleton"]["sceneDest"])
 
-func _on_timer_timeout():
-	var enemy_keys = ["Hog Rider", "Skeleton", "Barbarian"]
-	var index = randi_range(0, enemy_keys.size() - 1)
-	var key = enemy_keys[index]
-	spawnEnemy(EnemyType[key]["sceneDest"])
+func spawnBar():
+	for i in range(0, 2):
+		spawnEnemy(EnemyType["Barbarian"]["sceneDest"])
+
+
+func pawnHog():
+	for i in range(0, 2):
+		spawnEnemy(EnemyType["Hog Rider"]["sceneDest"])
+
 
 func spawnEnemy(type: PackedScene):
 	var instance: EnemyBase = type.instantiate()
@@ -77,5 +107,38 @@ func spawnEnemy(type: PackedScene):
 	enemies.append(instance)
 
 func lose():
-	print("You lost")
+	var dialoge : EndGameDialog = preload("res://EndGameDialoge.tscn").instantiate()
+	if dialoge is EndGameDialog:
+		dialoge.setState("You Lost")
+	get_tree().current_scene.get_node("HUD").add_child(dialoge)
 	done = true
+func win():
+	var dialoge : EndGameDialog = preload("res://EndGameDialoge.tscn").instantiate()
+	if dialoge is EndGameDialog:
+		dialoge.setState("You Survived")
+	get_tree().current_scene.get_node("HUD").add_child(dialoge)
+	done = true
+func _process(delta: float) -> void:
+	timeLeft -= delta
+	if timeLeft <= 0:
+		win()
+		
+		
+	if(timeLeft<=120 && timeLeft + delta > 120):
+		BarTimer.wait_time = 3.5
+		BarTimer.start()
+	elif(timeLeft<=45 && timeLeft + delta > 45):
+		BarTimer.wait_time = 2
+		BarTimer.start()
+	
+	if(timeLeft<=60 && timeLeft + delta > 60):
+		skeletonTimer.wait_time = 1.5
+		skeletonTimer.start()
+		
+	if(timeLeft<=90 && timeLeft + delta > 90):
+		hogTimer.wait_time = 5
+		hogTimer.start()
+	
+	if(timeLeft<=30 && timeLeft + delta > 30):
+		hogTimer.wait_time = 2.5
+		hogTimer.start()

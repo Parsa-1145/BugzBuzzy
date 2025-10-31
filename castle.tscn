@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://brfujftq1fsp0" path="res://Castle.gd" id="1_xtwgx"]
 [ext_resource type="PackedScene" uid="uid://c4gmn0eu7afec" path="res://town_hall.tscn" id="2_vm22h"]
-[ext_resource type="Script" uid="uid://dcrajj7u7p6mc" path="res://castle_health.gd" id="3_1gkcl"]
+[ext_resource type="Script" path="res://castle_health.gd" id="3_1gkcl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1gkcl"]
 size = Vector3(2.8322754, 1.5665283, 2.0185547)
 
-[node name="StaticBody3D2" type="StaticBody3D"]
+[node name="StaticBody3D3" type="StaticBody3D"]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 script = ExtResource("1_xtwgx")
 

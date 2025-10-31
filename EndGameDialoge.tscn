@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://p0wocr143he1"]
+
+[ext_resource type="Script" uid="uid://fu7v6v30r6b4" path="res://EndGameDialog.gd" id="1_6v7af"]
+
+[node name="WinDialoge" type="MarginContainer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_6v7af")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="WinState" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "asdasdasd"
+
+[node name="Hash" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
