@@ -1,11 +1,11 @@
 extends Projectile
 
-@export var explosion_radius: float = 5.0
+@export var explosion_radius: float = 7.0
 var gravity = 1
 
 func _ready() -> void:
 	speed = 10
-	damage = 15
+	damage = 6
 	contact_monitor = true
 	max_contacts_reported = 1
 	await get_tree().create_timer(life_time).timeout
@@ -25,7 +25,9 @@ func explode() -> void:
 	
 	for enemy in GameManager.enemies:
 		if is_instance_valid(enemy):
-			var dist = global_position.distance_to(enemy.global_position)
+			var dx = global_position.x - enemy.global_position.x;
+			var dz = global_position.z - enemy.global_position.z;
+			var dist = sqrt(dx*dx + dz*dz);
 			if dist <= explosion_radius:
 				enemy.take_damage(damage)
 	

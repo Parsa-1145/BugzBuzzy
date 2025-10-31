@@ -7,11 +7,17 @@ extends Tower
 @export var fireRate: float = 0.5
 var timeSinceLastShoot: float = 0
 
+func _ready() -> void:
+	health = 10
+
+
 func _process(delta: float) -> void:
 	var minDist: float = INF
 	var closestEnemy: EnemyBase
 	for enemy: EnemyBase in GameManager.enemies:
 		var dist: float = (enemy.global_position - global_position).length()
+		if dist > 40:
+			continue
 		if  dist < minDist:
 			minDist = dist
 			closestEnemy = enemy

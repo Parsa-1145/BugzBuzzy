@@ -74,3 +74,7 @@ func spawnEnemy(type: PackedScene):
 		y -= 65
 	instance.position = Vector3(x, 2, y)
 	enemies.append(instance)
+
+func lose():
+	print("You lost")
+	queue_free()

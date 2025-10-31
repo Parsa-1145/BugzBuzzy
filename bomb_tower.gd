@@ -10,12 +10,18 @@ var v_y = 4
 var g = 1
 var closestEnemy: EnemyBase
 
+func _ready() -> void:
+	health = 10
+
+
 
 func _process(delta: float) -> void:
 	var minDist: float = INF
 	closestEnemy = null
 	for enemy: EnemyBase in GameManager.enemies:
 		var dist: float = (enemy.global_position - global_position).length()
+		if dist > 20:
+			continue
 		if  dist < minDist:
 			minDist = dist
 			closestEnemy = enemy
@@ -56,3 +62,8 @@ func _process(delta: float) -> void:
 	var launch_dir = (forward + Vector3(0, v_y, 0)).normalized()
 
 	projectile.direction = launch_dir
+
+func die(): 
+	pass
+	queue_free()
+	#todo 

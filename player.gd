@@ -11,7 +11,7 @@ extends CharacterBody3D
 @export var mouse_sensitivity: float = 0.3
 @export var camera: CameraFollow
 
-@export var health: float = 10 
+@export var health: float = 8
 @export var money : int = 0
 
 var yaw: float = 0.0
@@ -92,3 +92,8 @@ func shoot_projectile() -> void:
 	# Direction is where the player is facing
 	var forward = -transform.basis.z
 	projectile.direction = forward
+	
+func take_damage():
+	health -= 1
+	if (health <= 0):
+		print("You lost")
