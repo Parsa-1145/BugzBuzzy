@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=3 uid="uid://u4maxerso60"]
+
+[ext_resource type="Script" uid="uid://c2j6v7cm1uws1" path="res://TowerPurchaseDialog.gd" id="1_2hth4"]
+[ext_resource type="Script" uid="uid://c5vmexufaxajf" path="res://TowerPurchaseMenu.gd" id="1_71k8y"]
+[ext_resource type="Script" uid="uid://djwnadbxyr78p" path="res://TowerPurchaseCard.gd" id="3_xxhm6"]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+script = ExtResource("1_2hth4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+script = ExtResource("1_71k8y")
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(300, 200)
+layout_mode = 2
+color = Color(0.8753943, 0.7304872, 0.56625265, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Choose a tower"
+
+[node name="Button" type="Button" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "X"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4651162, 0.40699777, 0.25906718, 1)
+script = ExtResource("3_xxhm6")
+towerType = "X-Bow"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="TowerImageBox" type="ColorRect" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TowerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "X Bow"
+
+[node name="TowerPriceLabel" type="Label" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "60"
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.4651162, 0.40699777, 0.25906718, 1)
+script = ExtResource("3_xxhm6")
+towerType = "Bomb Tower"
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer"]
+layout_mode = 2
+
+[node name="TowerImageBox" type="ColorRect" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 1
+color = Color(0.10747976, 0.10747973, 0.10747973, 1)
+
+[node name="TowerNameLabel" type="Label" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Bomb Tower"
+
+[node name="TowerPriceLabel" type="Label" parent="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer/ColorRect2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "70"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(3.435, 25.34)
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/MarginContainer/ColorRect/MarginContainer/VBoxContainer/HBoxContainer2/Button" to="." method="close"]

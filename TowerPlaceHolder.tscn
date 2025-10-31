@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciksc6f8c2y1f"]
+
+[ext_resource type="Script" uid="uid://okrlbq4c2jc4" path="res://TowePlaceholder.gd" id="1_gqsfk"]
+
+[sub_resource type="TorusMesh" id="TorusMesh_hr5et"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61od6"]
+size = Vector3(2.2424927, 0.65856934, 2.1277008)
+
+[node name="Area3D" type="Area3D"]
+collision_layer = 7
+collision_mask = 7
+priority = 10
+script = ExtResource("1_gqsfk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14179897, 0, -0.078985214)
+mesh = SubResource("TorusMesh_hr5et")
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2720337, 1.4367262, 0.49227905)
+text = "asdasddasd"
+font_size = 100
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20339966, 0.2767334, -0.05974579)
+shape = SubResource("BoxShape3D_61od6")
